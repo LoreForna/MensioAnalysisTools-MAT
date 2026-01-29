@@ -388,8 +388,8 @@ class AnalisiComponentiASeccoSenzaCampione(QgsProcessingAlgorithm):
             ('"fid"', FieldNames.FID, 4, 0, 0),
             (f'"{FieldNames.USM}"', FieldNames.USM, 4, 0, 0),
             (f'"{FieldNames.NUM_COMPONENTE}"', FieldNames.NUM_COMPONENTE, 4, 0, 0),
-            ('"width"', FieldNames.WIDTH_BBOX, 6, 10, 6),
-            ('"height"', FieldNames.HEIGHT_BBOX, 6, 10, 6),
+            ('"height"', FieldNames.WIDTH_BBOX, 6, 10, 6),  # INVERTITO: height del bbox → width_bbox
+            ('"width"', FieldNames.HEIGHT_BBOX, 6, 10, 6),  # INVERTITO: width del bbox → height_bbox
             ('"angle"', FieldNames.ANGLE_BBOX, 6, 10, 6),
             ('"perimeter"', FieldNames.PERIMETER_BBOX, 6, 10, 6),
             (f'"{FieldNames.AREA_BBOX}"', FieldNames.AREA_BBOX, 6, 10, 6)
