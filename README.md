@@ -69,22 +69,6 @@ La suite è disponibile in due versioni principali:
 - `analisi_quantitativa_mattoni_senza_campione_v1_1.py`
 - `analisi_componenti_secco_altri_materiali_senza_campione_v2.0.py`
 
-> **Novità v2.0 — Unificazione degli script.** I due script precedenti
-> `analisi_componenti_a_secco_senza_campione_v1_1.py` e
-> `analisi_altri_componenti_senza_campione_v1_1.py`, che avevano logica di
-> calcolo e output **identici**, sono stati fusi in un unico strumento:
-> **"Componenti a secco / altri materiali senza campione"**. Lo strumento per i
-> mattoni resta distinto.
-
-**Vantaggi v2.0**:
-- ✅ Workflow semplificato (11 step invece di 19)
-- ✅ Non richiede layer campioni
-- ✅ Campo `superficie` opzionale con comportamento adattivo
-- ✅ Più veloce da eseguire
-- ✅ Output ridotti (5 invece di 6)
-- ✅ Un solo strumento per componenti a secco e altri materiali (anziché due)
-- ✅ Nuovo modulo di **statistiche avanzate** per pattern e reimpiego (vedi sezione dedicata)
-
 ---
 
 ## 🛠️ Suite di Strumenti
