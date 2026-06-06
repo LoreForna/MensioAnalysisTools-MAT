@@ -7,7 +7,7 @@ finalizzata all'individuazione di pattern di posa e di elementi di probabile
 L'algoritmo opera in due modalità:
 
 - **Mattoni** (mattoni romani - ritagli di laterizi): sola analisi del paramento.
-- **Altri componenti / componenti a secco** (blocchi, conci): analisi del
+- **Altri componenti / componenti a secco** (mattoni non tagliati, blocchi, conci): analisi del
   paramento **più** analisi metrologica modulare opzionale.
 
 ---
