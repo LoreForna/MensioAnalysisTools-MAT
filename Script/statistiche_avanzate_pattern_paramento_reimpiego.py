@@ -165,7 +165,7 @@ class MasonryPatternAnalysis(QgsProcessingAlgorithm):
 
     def initAlgorithm(self, config=None):
         self.addParameter(QgsProcessingParameterFeatureSource(
-            self.INPUT, self.tr('Layer poligonale dei mattoni'),
+            self.INPUT, self.tr('Layer poligonale dei componenti'),
             [QgsProcessing.TypeVectorPolygon]))
         self.addParameter(QgsProcessingParameterField(
             self.FIELD_ID, self.tr('Campo identificativo univoco'),
@@ -187,7 +187,7 @@ class MasonryPatternAnalysis(QgsProcessingAlgorithm):
             parentLayerParameterName=self.INPUT,
             type=QgsProcessingParameterField.Numeric))
         self.addParameter(QgsProcessingParameterNumber(
-            self.RADIUS, self.tr('Raggio per vicinato a raggio fisso (unita\' mappa; 0 = auto = 3xlunghezza media)'),
+            self.RADIUS, self.tr('Raggio per vicinato a raggio fisso (unita\' mappa; 0 = auto = 3 x lunghezza media)'),
             type=QgsProcessingParameterNumber.Double, defaultValue=0.0, minValue=0.0))
         self.addParameter(QgsProcessingParameterNumber(
             self.KNN, self.tr('Numero di vicini k (k-nearest)'),
