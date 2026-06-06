@@ -104,9 +104,7 @@ Analisi specializzata per murature in laterizi di età romana.
 ### 2. Analisi Quantitativa Componenti a Secco / Altri Materiali
 
 Analisi per componenti lapidei assemblati senza legante (blocchi, conci) e per
-componenti eterogenei o materiali speciali. Dalla **v2.0** i due strumenti
-separati ("Componenti a secco" e "Altri componenti") sono **unificati** in un
-unico algoritmo, poiché condividevano logica di calcolo e output identici.
+componenti eterogenei o materiali speciali.
 
 #### Versione 2.0 (Con Campione)
 **File**:
