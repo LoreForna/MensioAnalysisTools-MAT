@@ -3,7 +3,6 @@
 Algoritmo Processing per QGIS per l'analisi statistica di un paramento murario,
 finalizzata all'individuazione di pattern di posa e di elementi di probabile
 **reimpiego** (spolia). Si concatena all'output di **MensioAnalysisTools**
-(`analisi_quantitativa_mattoni` o `analisi_quantitativa_altri_componenti`).
 
 L'algoritmo opera in due modalità:
 
