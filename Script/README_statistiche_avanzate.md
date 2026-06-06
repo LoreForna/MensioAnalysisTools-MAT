@@ -59,11 +59,11 @@ L'algoritmo opera in due modalità:
 ## 2. Le due modalità d'uso
 
 ### Mattoni
-I mattoni romani da paramento sono **ritagli**: triangoli o frammenti ottenuti
-spezzando bessali e sesquipedali in cantiere. La loro lunghezza dipende dal
-taglio, non da un modulo teorico. Per questo **l'analisi metrologica NON va
-attivata sui mattoni**: cercare un modulo su misure di ritaglio produrrebbe
-picchi spuri. Si lascia il flag *"Esegui analisi metrologica modulare"*
+I mattoni romani da paramento sono **ritagli** ottenuti tagliando mattoni interi in cantiere. 
+La loro lunghezza dipende dal taglio, mentre esistono moduli standard per la produzione dei mattoni interi.
+Per questo **l'analisi metrologica NON va attivata sui mattoni**: cercare un modulo su misure di ritaglio produrrebbe
+picchi spuri. 
+Si lascia il flag *"Esegui analisi metrologica modulare"*
 disattivato (impostazione predefinita).
 
 ### Altri componenti / componenti a secco
