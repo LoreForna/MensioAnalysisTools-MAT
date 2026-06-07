@@ -166,14 +166,6 @@ Richiede `numpy`, `scipy`, `scikit-learn` (di norma già presenti nel Python di 
 3. Seleziona il file `.py` desiderato
 4. Lo script apparirà nel gruppo "Analisi quantitative"
 
-### Installazione Plugin DataPlotly
-
-Necessario per la visualizzazione dei grafici nel layout di stampa:
-
-1. In QGIS: `Plugins` → `Manage and Install Plugins`
-2. Cerca "DataPlotly"
-3. Installa il plugin
-
 ---
 
 ## 📧 Requisiti
