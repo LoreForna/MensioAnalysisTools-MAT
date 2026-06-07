@@ -51,7 +51,7 @@ La suite è disponibile in due versioni principali:
 
 ---
 
-## 🛠️ Suite di Strumenti
+## 📋 Suite di Strumenti
 
 ### 1. Analisi Quantitativa Mattoni
 
@@ -153,7 +153,7 @@ Richiede `numpy`, `scipy`, `scikit-learn` (di norma già presenti nel Python di 
 
 ---
 
-## 🛠️ Installazione suite
+## 🛠️ Installazione Suite
 
 ### Metodo 1: Copia diretta (consigliato)
 
