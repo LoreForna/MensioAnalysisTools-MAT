@@ -113,19 +113,17 @@ componenti eterogenei o materiali paericolari.
 
 Strumento di **analisi statistica avanzata** del paramento murario, finalizzato
 all'individuazione di **pattern di posa** e di elementi di probabile **reimpiego**. 
-Si concatena all'output degli strumenti MensioAnalysisTools (usa i campi 
-`width_bbox`, `height_bbox`, `area_componente`, `angle_bbox`, `fid`).
+Si concatena all'output degli strumenti MensioAnalysisTools (usa i campi `width_bbox`, 
+`height_bbox`, `area_componente`, `angle_bbox`, `fid`).
 
 **File**: `statistiche_avanzate_pattern_paramento_reimpiego.py`  
-**Nome nel toolbox**: *Statistiche avanzate pattern paramento e reimpiego*
-
 
 ### Due modalità d'uso
 
 - **Mattoni** (laterizi di ritaglio): sola analisi del paramento. L'analisi
-  metrologica **non** va attivata (i ritagli non seguono un modulo teorico).
+  metrologica **non** va attivata (i ritagli non seguono un modulo di riferimento).
 - **Componenti a secco / altri materiali** (blocchi, conci): analisi del
-  paramento **più** analisi metrologica modulare opzionale.
+  paramento **più** analisi metrologica opzionale.
 
 ### Mapping dei campi in ingresso
 
