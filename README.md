@@ -11,25 +11,6 @@ Collezione di algoritmi di processing QGIS progettati per l'analisi dimensionale
 
 ---
 
-## 📋 Indice
-
-- [Caratteristiche](#-caratteristiche)
-- [Versioni Disponibili](#-versioni-disponibili)
-- [Suite di Strumenti](#-suite-di-strumenti)
-- [Statistiche Avanzate: Pattern e Reimpiego](#-statistiche-avanzate-pattern-e-reimpiego)
-- [Installazione](#-installazione-suite)
-- [Requisiti](#-requisiti)
-- [Struttura Dati](#-struttura-dati)
-- [Utilizzo](#-utilizzo)
-- [Output](#-output)
-- [Metodologia](#-metodologia)
-- [Esempio](#-esempio)
-- [Contributi](#-contributi)
-- [Crediti](#-crediti)
-- [Licenza](#-licenza)
-
----
-
 ## ✨ Caratteristiche
 
 - **Analisi automatizzata** di componenti murari con calcolo di statistiche dimensionali complete
