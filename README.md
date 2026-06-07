@@ -153,7 +153,7 @@ Richiede `numpy`, `scipy`, `scikit-learn` (di norma già presenti nel Python di 
 
 ---
 
-## 🛠️ Installazione Suite
+## 🛠️ Installazione
 
 ### Metodo 1: Copia diretta (consigliato)
 
