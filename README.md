@@ -38,7 +38,7 @@ Analisi specializzata per murature in laterizi di età romana.
 
 **Caratteristiche**:
 - Ottimizzato per opus latericium
-- Intervalli di distribuzione configurabili (default, 4mm per larghezza e 2mm per altezza)
+- Intervalli di distribuzione configurabili (default 4mm per larghezza e 2mm per altezza)
 - Calcolo del rapporto di suoerficie mattoni/malta per campione
 - Stima del numero di mattoni interi per campione
 - Statistiche per ogni area campionata
@@ -67,7 +67,7 @@ componenti eterogenei o materiali paericolari.
 - `altri_componenti_v2_0.py`
 
 **Caratteristiche**:
-- Calcoli metrologici con modulo configurabile (default: piede romano 0.296m)
+- Calcoli metrologici con modulo configurabile (default piede romano 0.296m)
 - Campi modulo solo per superficie='intera'
 - Statistiche per campione
 - Intervalli di distribuzione configurabili (default 1cm)
