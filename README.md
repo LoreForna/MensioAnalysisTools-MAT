@@ -33,7 +33,8 @@ Collezione di algoritmi di processing QGIS progettati per l'analisi dimensionale
 Analisi specializzata per murature in laterizi di età romana.
 
 #### Con Campione
-**File**: `mattoni_v2_0.py`
+**File**:
+- `mattoni_v2_0.py`
 
 **Caratteristiche**:
 - Ottimizzato per opus latericium
@@ -43,7 +44,8 @@ Analisi specializzata per murature in laterizi di età romana.
 - Statistiche per ogni area campionata
 
 #### Senza Campione
-**File**: `mattoni_senza_campione_v2_0.py`
+**File**:
+- `mattoni_senza_campione_v2_0.py`
 
 **Caratteristiche**:
 - Nessun layer campioni richiesto
@@ -72,7 +74,8 @@ componenti eterogenei o materiali paericolari.
 - Supporto per tipologie multiple di materiali e filtri avanzati
 
 #### Senza Campione
-**File**: `componenti_secco_altri_materiali_senza_campione_v2.0.py` 
+**File**:
+- `componenti_secco_altri_materiali_senza_campione_v2.0.py` 
 
 **Caratteristiche**:
 - Un **unico strumento** per componenti a secco e altri materiali
@@ -87,7 +90,8 @@ componenti eterogenei o materiali paericolari.
 Strumento di **analisi statistica avanzata** dei componenti già quantificati finalizzato all'individuazione di **pattern** e di possibili elementi di **reimpiego**. Si 
 concatena all'output `analisi_rilievo` (usa i campi `fid`, `area_componente`, `width_bbox`, `height_bbox`, `angle_bbox`).
 
-**File**: `statistiche_avanzate_pattern_reimpiego.py`  
+**File**:
+- `statistiche_avanzate_pattern_reimpiego.py`  
 
 ### Due modalità d'uso
 
