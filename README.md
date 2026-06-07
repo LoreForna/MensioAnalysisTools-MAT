@@ -480,6 +480,6 @@ Fornaciari, L. (2026). MensioAnalysisTools: Suite di strumenti QGIS per l'analis
 
 ## 📄 Licenza
 
-Questo progetto è rilasciato sotto licenza **GNU GPLv3** e **CC BY-SA 4.0** .
+Questo progetto è rilasciato sotto licenza **GNU GPLv3**.
 
 ---
