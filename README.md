@@ -36,9 +36,9 @@ La suite è disponibile in due versioni principali:
 **Ideale per**: Analisi comparative tra diverse aree campionate
 
 **File**:
-- `analisi_quantitativa_mattoni_v1_0.py`
-- `analisi_quantitativa_componenti_a_secco_v1_0.py`
-- `analisi_quantitativa_altri_componenti_v1_0.py`
+- `analisi_quantitativa_mattoni_v2_0.py`
+- `analisi_quantitativa_componenti_a_secco_v2_0.py`
+- `analisi_quantitativa_altri_componenti_v2_0.py`
 
 ### Senza Area Campione
 **Modalità**: Analisi aggregate globali  
@@ -46,7 +46,7 @@ La suite è disponibile in due versioni principali:
 **Ideale per**: Analisi rapide per murature non campionate
 
 **File**:
-- `analisi_quantitativa_mattoni_senza_campione_v1_1.py`
+- `analisi_quantitativa_mattoni_senza_campione_v2_0.py`
 - `analisi_componenti_secco_altri_materiali_senza_campione_v2.0.py`
 
 ---
@@ -58,7 +58,7 @@ La suite è disponibile in due versioni principali:
 Analisi specializzata per murature in laterizi di età romana.
 
 #### Con Campione
-**File**: `analisi_quantitativa_mattoni_v1_0.py`
+**File**: `analisi_quantitativa_mattoni_v2_0.py`
 
 **Caratteristiche**:
 - Ottimizzato per opus latericium
@@ -68,7 +68,7 @@ Analisi specializzata per murature in laterizi di età romana.
 - Statistiche per ogni area campionata
 
 #### Senza Campione
-**File**: `analisi_quantitativa_mattoni_senza_campione_v1_1.py`
+**File**: `analisi_quantitativa_mattoni_senza_campione_v2_0.py`
 
 **Caratteristiche**:
 - Nessun layer campioni richiesto
@@ -87,8 +87,8 @@ componenti eterogenei o materiali paericolari.
 
 #### Con Campione
 **File**:
-- `analisi_quantitativa_componenti_a_secco_v1_0.py`
-- `analisi_quantitativa_altri_componenti_v1_0.py`
+- `analisi_quantitativa_componenti_a_secco_v2_0.py`
+- `analisi_quantitativa_altri_componenti_v2_0.py`
 
 **Caratteristiche**:
 - Calcoli metrologici con modulo configurabile (default: piede romano 0.296m)
@@ -460,17 +460,17 @@ Gli script si basano sulla metodologia proposta da:
 ## 🎯 Best Practices
 
 ### Acquisizione dati
-- ✓ Usa un sistema di riferimento metrico appropriato
+- ✓ Usa un sistema di riferimento metrico
 - ✓ Digitalizza accuratamente i contorni dei componenti (scala 1:1)
-- ✓ Marca correttamente il campo `superficie` (intera/parziale) se presente
-- ✓ Classifica i materiali in modo coerente nel campo `tipo`
-- ✓ Compila il campo `usm` in modo coerente
-- ✓ Mantieni la topologia pulita (no overlap, no gap)
+- ✓ Mantieni la topologia pulita (no overlap, no gap, solo geometrie valide)
+- ✓ Compila correttamente il campo `superficie` (intera/parziale) se necessario
+- ✓ Per murature miste classifica i componenti nel campo `tipo`
+- ✓ Compila il campo `usm` 
 
 ### Configurazione parametri
-- ✓ Scegli step range appropriati alla scala di analisi
-- ✓ Per analisi metrologiche, ricerca il valore di modulo storicamente documentato
-- ✓ Usa filtri materiali quando necessario per analisi separate
+- ✓ Scegli step range appropriati al materiale
+- ✓ Per analisi metrologiche, ricerca il valore del modulo di riferimento storicamente documentato
+- ✓ Filtra i componenti per analisi separate su materiali diversi
 - ✓ Documenta sempre i parametri utilizzati nei metadati
 
 ---
@@ -487,4 +487,3 @@ Fornaciari, L. (2026). MensioAnalysisTools: Suite di strumenti QGIS per l'analis
 Questo progetto è rilasciato sotto licenza **GNU GPLv3** e **CC BY-SA 4.0** .
 
 ---
-
