@@ -111,8 +111,7 @@ componenti eterogenei o materiali paericolari.
 
 ## 🔬 Statistiche Avanzate: Pattern e Reimpiego
 
-Strumento di **analisi statistica avanzata** del paramento murario, finalizzato
-all'individuazione di **pattern** e di possibili elementi di **reimpiego**. Si 
+Strumento di **analisi statistica avanzata** dei componenti già quantificati finalizzato all'individuazione di **pattern** e di possibili elementi di **reimpiego**. Si 
 concatena all'output `analisi_rilievo` (usa i campi `width_bbox`, `height_bbox`, 
 `area_componente`, `angle_bbox`, `fid`).
 
