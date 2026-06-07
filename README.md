@@ -484,6 +484,6 @@ Questo progetto è rilasciato sotto licenza **GNU GPLv3**.
 
 ---
 
-Script e documentazione ottimizzati con Claude.ai 
+Script e documentazione aggiornati con Claude.ai 
 
 ---
