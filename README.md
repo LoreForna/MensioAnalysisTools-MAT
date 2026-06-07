@@ -137,16 +137,6 @@ Si concatena all'output degli strumenti MensioAnalysisTools (usa i campi
 | Campo angolo | `angle_bbox` | orientamento di posa, assiale 0–180° |
 | Campo id | `fid` | identificativo univoco |
 
-### Output
-
-- **Paramento analizzato** — layer poligonale arricchito con tutti i campi
-- diagnostici (`R_fill`, `mahal`, `PC1`, `PC2`, `dev_glob`, `dev_loc_rad`,
-- `disp_loc_rad`, `n_rad`, `dev_loc_knn`, `disp_loc_knn`, `cluster`,
-- `reuse_score`, `lisa_I`, `lisa_p`, `lisa_clust`; con metrologia attiva
-- anche `w_phase`, `w_resid`, `h_phase`, `h_resid`)
-- **Quantogram in CSV** — prodotto solo con metrologia attiva (modulo, Φ_lunghezza, Φ_altezza)
-- **Log dei Processing** — varianza spiegata PCA, orientamento medio e R̄, CV globali e per cluster, n. hotspot HH, e (metrologia) R̄/Rayleigh, modulo ottimale e significatività Monte Carlo
-
 ### Dipendenze aggiuntive
 
 Richiede `numpy`, `scipy`, `scikit-learn` (di norma già presenti nel Python di QGIS).
@@ -502,7 +492,7 @@ Fornaciari, L. (2026). MensioAnalysisTools: Suite di strumenti QGIS per l'analis
 
 ## 📄 Licenza
 
-Questo progetto è rilasciato sotto licenza **GNU General Public License v3.0**.
+Questo progetto è rilasciato sotto licenza **GNU GPLv3** e **CC BY-SA 4.0** .
 
 ---
 
