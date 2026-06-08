@@ -20,6 +20,7 @@ Collezione di algoritmi di processing QGIS progettati per l'analisi dimensionale
 - **Calcolo del poligono minimo orientato** (Minimum Oriented Bounding Box) per ogni elemento
 - **Statistiche descrittive**: media, deviazione standard, range, distribuzioni
 - **Statistiche avanzate**: individuazione di pattern e di elementi di **reimpiego** tramite analisi multivariata e spaziale
+- **Analisi dei corsi**: riconoscimento automatico dei filari, calcolo di letti di malta, giunti verticali, ammorsatura e rilevamento delle discontinuità costruttive (change-point)
 - **Due modalità di analisi**: per campione o senza campione
 - **Output multipli** organizzati: layer geometrici, tabelle statistiche, distribuzioni per range
 - **Validazione robusta** dei dati in input con messaggi di errore dettagliati
@@ -116,6 +117,44 @@ Richiede `numpy`, `scipy`, `scikit-learn` (di norma già presenti nel Python di 
 
 ---
 
+## 📐 Analisi dei Corsi del Paramento
+
+Strumento per il **riconoscimento automatico dei corsi** (filari orizzontali) di un paramento murario già segmentato in componenti poligonali. Adatta in ambiente QGIS Processing la logica incrementale "a catena" di **TagLab** (`QtCourseAnalysis.py`): ogni corso viene costruito a partire dal pezzo più a sinistra ed esteso verso destra, agganciando di volta in volta il primo componente compatibile per continuità di quota, allineamento dei bordi e somiglianza di altezza. Si concatena all'output `analisi_rilievo` (usa i campi `width_bbox`, `height_bbox`, `fid` e la geometria).
+
+**File**:
+- `analisi_corsi_paramento.py`
+
+**⚠️ Richiede un rilievo RADDRIZZATO** (ortofoto frontale o fotopiano), con la Y rivolta verso l'alto.
+
+### Cosa calcola
+
+- **Riconoscimento dei corsi**: assegna a ogni componente un `corso_id`, la posizione nel filare e il numero di pezzi del corso
+- **Inclinazione** di ciascun corso (fit ai minimi quadrati sui centroidi)
+- **Analisi dei giunti** (opzionale): per ogni corso lo spessore del **letto di malta** orizzontale verso il corso superiore, il **giunto verticale** di testa tra pezzi contigui, e lo **sfalsamento dei giunti** (indice di ammorsatura: 0 = giunti allineati / possibile cesura; 0.5 = sfalsamento di mezzo pezzo)
+- **Rilevamento delle discontinuità** (opzionale): individua lungo la serie dei corsi i punti dove cambia il regime costruttivo (letto di malta, altezza, ammorsatura) tramite *change-point detection*, assegnando a ogni corso un `segmento`. Le cesure sono candidate a giornate di lavoro, riprese o lotti diversi di materiale.
+
+### Parametri principali
+
+- **Tolleranze di aggancio** (centroide Y, bordi alto/basso, somiglianza di altezza): default 0.3, relative all'altezza del pezzo
+- **Fattore gap massimo in X**: default 1.5 (× larghezza media del corso); abbassare su murature integre, alzare su paramenti lacunosi
+- **Segnale per le discontinuità**: *letto di malta*, *altezza corso*, *sfalsamento giunti*, *letto + sfalsamento* (default), *letto + sfalsamento + altezza*
+- **Sensibilità (penalità)**: default 2.5; alta = poche cesure nette, bassa = più cesure
+
+### Output
+
+1. **Componenti con corso** (poligoni): layer arricchito con `corso_id`, `pos_in_corso`, `corso_n_pezzi` e, se attive le opzioni, `giunto_vert` e `segmento`
+2. **Sintesi per corso** (tabella): una riga per corso con `corso_id`, `n_pezzi`, `quota_media`, `altezza_corso`, `lunghezza_corso`, `inclinaz_deg` e, se attive le opzioni, `letto_malta_sup`, `sfalso_giunti_sup`, `segmento`, `cesura`
+
+### Dipendenze aggiuntive
+
+Richiede `numpy` (sempre presente in QGIS). Il rilevamento delle discontinuità usa, **se installata**, la libreria `ruptures` (algoritmo PELT); in sua assenza ricade automaticamente su un rilevatore interno in puro numpy che fornisce risultati equivalenti. `ruptures` è quindi **opzionale** e conviene solo per velocizzare l'analisi su serie molto lunghe. Per installarla, dalla *OSGeo4W Shell*:
+
+```
+python -m pip install ruptures
+```
+
+---
+
 ## 🛠️ Installazione
 
 ### Metodo 1: Copia diretta (consigliato)
@@ -129,8 +168,8 @@ Richiede `numpy`, `scipy`, `scikit-learn` (di norma già presenti nel Python di 
    ```
    processing/scripts/
    ```
-4. Copia gli scripts scaricati nella cartella
-5. Riavvia QGIS o ricarica gli scripts dal Processing Toolbox
+4. Copia gli script scaricati nella cartella
+5. Riavvia QGIS o ricarica gli script dal Processing Toolbox
 
 ### Metodo 2: Da Processing Toolbox
 
@@ -147,11 +186,12 @@ Richiede `numpy`, `scipy`, `scikit-learn` (di norma già presenti nel Python di 
 - **QGIS**: versione ≥ 3.16 (LTR o superiore)
 - **Python**: versione ≥ 3.8
 - **Plugin**: DataPlotly (opzionale)
-- **Librerie Python**: `numpy`, `scipy`, `scikit-learn` (solo per le statistiche avanzate; di norma già incluse nel Python di QGIS)
+- **Librerie Python**: `numpy`, `scipy`, `scikit-learn` (per le statistiche avanzate; di norma già incluse nel Python di QGIS); `ruptures` (opzionale, solo per velocizzare il rilevamento delle discontinuità nell'analisi dei corsi)
 
 ### Dati
 - Sistema di riferimento **cartografico o locale** (NO geografico WGS84)
 - Layer vettoriali poligonali con struttura dati specifica (vedi sotto)
+- Per l'**analisi dei corsi**: rilievo **raddrizzato** (ortofoto frontale / fotopiano) con Y verso l'alto
 
 ### Sistema Operativo
 - Windows, macOS, Linux (qualsiasi OS supportato da QGIS)
@@ -275,6 +315,31 @@ Poligoni dei singoli componenti murari
 
 ---
 
+### Workflow Analisi dei Corsi
+
+1. **Preparazione dati**
+   - Parti dall'output `analisi_rilievo` (deve contenere `width_bbox`, `height_bbox`)
+   - Verifica che il rilievo sia **raddrizzato** (fotopiano frontale), con Y verso l'alto
+
+2. **Esecuzione analisi**
+   - Apri Processing Toolbox
+   - Cerca "Analisi quantitative"
+   - Seleziona "Analisi dei corsi del paramento"
+
+3. **Parametri**:
+   - `Layer poligonale dei componenti`: l'output `analisi_rilievo`
+   - `Campo lunghezza` / `Campo altezza`: `width_bbox` / `height_bbox`
+   - `Campo identificativo`: `fid`
+   - `Tolleranze` e `fattore gap`: regola se i corsi risultano spezzati o fusi
+   - `Analisi dei giunti` e `Rilevamento discontinuità`: attivi di default
+   - `Segnale` e `Sensibilità`: per il rilevamento delle discontinuità
+
+4. **Risultati**
+   - Colora i componenti per `corso_id` o `segmento` per leggere la tessitura sulla mappa
+   - Nella tabella di sintesi, leggi `letto_malta_sup` e `cesura` dal basso verso l'alto
+
+---
+
 ## 📈 Output
 
 ### Output Con Campione (6 file)
@@ -302,6 +367,15 @@ Poligoni dei singoli componenti murari
      6. Area (count, min, max, range, mean, stddev)
 4. **Conteggio Range Larghezza** - Distribuzione globale
 5. **Conteggio Range Altezza** - Distribuzione globale
+
+---
+
+### Output Analisi dei Corsi (2 file)
+
+1. **Componenti con corso** - layer arricchito con `corso_id`, `pos_in_corso`, `corso_n_pezzi` (+ `giunto_vert`, `segmento` se attivi)
+2. **Sintesi per corso** - tabella con quota, altezza, lunghezza, inclinazione (+ `letto_malta_sup`, `sfalso_giunti_sup`, `segmento`, `cesura` se attivi)
+
+> Dettaglio completo nella sezione [Analisi dei Corsi del Paramento](#-analisi-dei-corsi-del-paramento).
 
 ---
 
@@ -389,7 +463,7 @@ OUTPUT (5 file)
 
 ## 💡 Esempio
 
-**Nota**: I dati di esempio per testare gli scripts si trovano nella cartella **Data/** del repository:
+**Nota**: I dati di esempio per testare gli script si trovano nella cartella **Data/** del repository:
 - `TEST_Analisi_campioni.gpkg` - GeoPackage con layer di test (mattoni) già configurati
 
 ### Esempio - Analisi muratura con campione
@@ -423,10 +497,16 @@ OUTPUT (5 file)
 
 ## 📚 Riferimenti Metodologici
 
-Gli scrips si basano sulla metodologia proposta da:
+Gli script si basano sulla metodologia proposta da:
 
-**Medri, M.** et al. - *"Metodi di analisi quantitativa delle murature romane in opera laterizia"*
-[PDF](https://pdfs.semanticscholar.org/373e/c1a3bf317c3216612f4c63d9802da5d67ce0.pdf)
+**Medri, M. et al.** - *"Metodi di analisi quantitativa delle murature romane in opera laterizia"*
+(https://pdfs.semanticscholar.org/373e/c1a3bf317c3216612f4c63d9802da5d67ce0.pdf)
+
+**Fornaciari, L.**- *"AI and Deep Learning for Image-Based Segmentation of Ancient Masonry: A Digital Methodology for Mensiochronology of Roman Brick"*
+(https://www.mdpi.com/3369204)
+
+L'analisi dei corsi adatta l'algoritmo di riconoscimento dei filari di **TagLab** (CNR-ISTI Visual Computing Lab), `QtCourseAnalysis.py`:
+> https://github.com/cnr-isti-vclab/TagLab
 
 ---
 
@@ -443,6 +523,7 @@ Gli scrips si basano sulla metodologia proposta da:
 ### Configurazione parametri
 - ✓ Scegli step range appropriati al materiale
 - ✓ Per analisi metrologiche, ricerca il valore del modulo di riferimento storicamente documentato
+- ✓ Per l'analisi dei corsi, usa un rilievo raddrizzato e regola il fattore gap in base allo stato di conservazione del paramento
 - ✓ Filtra i componenti per analisi separate su materiali diversi
 - ✓ Documenta sempre i parametri utilizzati nei metadati
 
