@@ -1,4 +1,4 @@
-# Mensio Analysis Tools
+# Mensio Analysis Tools (MAT)
 
 [![QGIS](https://img.shields.io/badge/QGIS-%3E%3D3.16-green)](https://qgis.org)
 [![Python](https://img.shields.io/badge/Python-%3E%3D3.8-blue)](https://www.python.org/)
